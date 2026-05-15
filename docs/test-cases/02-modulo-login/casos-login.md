@@ -1,6 +1,6 @@
-# Casos de Prueba — Módulo Login
+# 🧪 Casos de Prueba — Módulo Login
 
-> **Versión:** 1.1.0
+> **Versión:** 1.0.0
 > **Módulo:** Login / Autenticación
 > **Prefijo de código:** TC-LOGIN
 > **Total de casos:** 10
@@ -9,28 +9,11 @@
 
 ---
 
-## Ambiente de Pruebas
-
-| Componente | Versión / Detalle |
-|---|---|
-| Backend | Django 4.2.11 + Django REST Framework 3.15.1 |
-| Frontend | Angular 17.3.0 |
-| Base de datos | PostgreSQL 16.2 |
-| Navegador | Google Chrome 124.0.6367.91 (64 bits) |
-| Sistema operativo | Windows 11 Pro 23H2 |
-| Herramienta API | Postman 11.3.2 |
-| URL local frontend | `http://localhost:4200` |
-| URL local backend | `http://localhost:8000` |
-
-> **Nota sobre evidencias:** Las capturas de pantalla referenciadas son archivos locales ubicados en `./evidencias/`. Para consultar las imágenes, clonar el repositorio y navegar a la carpeta correspondiente. No se encuentran disponibles como URLs públicas en esta versión.
-
----
-
-## Plantilla de Caso de Prueba
+## 📋 Plantilla de Caso de Prueba
 
 Cada caso de prueba sigue esta estructura estándar:
 
-| Campo | Descripción |
+| Campo | Descripción  |
 |---|---|
 | Identificador | Código único del caso (TC-LOGIN-XXX) |
 | Descripción | Qué se está probando |
@@ -39,36 +22,34 @@ Cada caso de prueba sigue esta estructura estándar:
 | Pasos a seguir | Secuencia de acciones a ejecutar |
 | Resultado esperado | Comportamiento correcto del sistema |
 | Resultado obtenido | Comportamiento real observado |
-| Estado | Pasó / Falló / Bloqueado |
+| Estado | ✅ Pasó / ❌ Falló / ⚠️ Bloqueado |
 | Evidencias | Referencias a capturas de pantalla o archivos |
 
 ---
 
-## Descripción de la Funcionalidad
+## 📝 Descripción de la Funcionalidad
 
 El módulo de Login de SofInventory implementa autenticación basada en **username y contraseña**. Al autenticarse exitosamente, el servidor Django genera un **token Bearer** único (64 caracteres URL-safe) que se persiste en la tabla `sesiones_api` de PostgreSQL con una duración de 12 horas. Este token debe incluirse en el header `Authorization: Bearer <token>` de todas las peticiones subsiguientes a recursos protegidos.
 
 El sistema invalida todas las sesiones activas previas del usuario al hacer login (una sola sesión activa por usuario). Al hacer logout, el campo `activa` de la sesión en la tabla `sesiones_api` se establece en `false`.
 
 **Endpoints involucrados:**
-
 - `POST /api/auth/login/` — Autenticación y obtención del token Bearer
 - `POST /api/auth/logout/` — Cierre de sesión / invalidación del token
 - `GET /api/auth/me/` — Verificación del token activo y datos del usuario
 
 ---
 
-## Casos de Prueba
+##  🧪 Casos de Prueba
 
 ---
 
 ### TC-LOGIN-001: Login exitoso como administrador
 
-
 **Descripción**
 Verificar que un usuario con rol Administrador puede autenticarse correctamente usando su username y contraseña, y acceder al dashboard con todos los permisos habilitados.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -77,7 +58,7 @@ Verificar que un usuario con rol Administrador puede autenticarse correctamente 
 | Tipo de prueba | Funcional |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 Existe usuario con `username = 'admin'`, contraseña `Admin123`, rol Administrador y estado activo en la tabla `usuarios`.
@@ -119,11 +100,12 @@ El sistema redirigió correctamente al dashboard. El token Bearer fue generado y
 
 | Tipo | Evidencia |
 |---|---|
-| Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-001-frontend.png) |
+
+[![Miniatura del formulario](./evidencias/frontend/TC-LOGIN-001-frontend.png)](./evidencias/frontend/TC-LOGIN-001-frontend.png)
 | Postman  | [Ver captura](./evidencias/postman/TC-LOGIN-001-postman.png) |
 | Database | [Ver captura](./evidencias/database/TC-LOGIN-001-db.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
 **Observación:** El flujo de autenticación funcionó correctamente en frontend, backend y base de datos.
 
@@ -132,9 +114,9 @@ El sistema redirigió correctamente al dashboard. El token Bearer fue generado y
 ### TC-LOGIN-002: Autenticación exitosa de usuario Supervisor
 
 **Descripción**
-Verificar que un usuario con rol Supervisor puede autenticarse y acceder al sistema con las restricciones de permisos correspondientes a su rol.
+Verificar que un usuario con rol Supervisor puede autenticarse y acceder al sistema con las restricciones de permisos correspondientes.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -143,7 +125,7 @@ Verificar que un usuario con rol Supervisor puede autenticarse y acceder al sist
 | Tipo de prueba | Funcional |
 | Prioridad | Alta |
 | Módulo | Autenticación / Control de acceso |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 Existe usuario con `username = 'sebascal'`, contraseña `sebas123`, rol Supervisor y estado activo en la tabla `usuarios`.
@@ -176,9 +158,9 @@ Acceso exitoso. El menú de administración no fue visible para el Supervisor. L
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-002-frontend.png) |
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-002-postman.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
-**Observación:** El control de acceso por rol funciona correctamente. El Supervisor no puede acceder a endpoints de administración de usuarios.
+**Observación:** El control de acceso por rol funciona correctamente. El supervisor no puede acceder a endpoints de administración.
 
 ---
 
@@ -187,7 +169,7 @@ Acceso exitoso. El menú de administración no fue visible para el Supervisor. L
 **Descripción**
 Verificar que el sistema rechaza el intento de login con un username que no existe en la tabla `usuarios` de PostgreSQL.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -196,7 +178,7 @@ Verificar que el sistema rechaza el intento de login con un username que no exis
 | Tipo de prueba | Funcional / Seguridad |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 El username `usuario.fantasma` NO está registrado en la tabla `usuarios`.
@@ -228,9 +210,9 @@ Se mostró el mensaje `"Usuario o contrasena incorrectos"`. El servidor respondi
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-003-frontend.png) |
 | Postman  | [Ver captura](./evidencias/postman/TC-LOGIN-003-postman.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
-**Observación:** El sistema no revela si el username existe o no, lo cual es una buena práctica de seguridad que previene la enumeración de usuarios.
+**Observación:** El sistema no revela si el username existe o no, lo cual es una buena práctica de seguridad.
 
 ---
 
@@ -239,7 +221,7 @@ Se mostró el mensaje `"Usuario o contrasena incorrectos"`. El servidor respondi
 **Descripción**
 Verificar que el sistema no permite enviar el formulario de login con los campos de username y/o contraseña vacíos.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -248,7 +230,7 @@ Verificar que el sistema no permite enviar el formulario de login con los campos
 | Tipo de prueba | Validación / Funcional |
 | Prioridad | Media |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 Ninguna sesión activa en el sistema.
@@ -278,7 +260,7 @@ Los mensajes de validación aparecieron en el frontend. Postman respondió HTTP 
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-004-frontend.png) |
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-004-postman.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
 **Observación:** Las validaciones del formulario Angular y del `LoginSerializer` de DRF funcionan correctamente ante campos vacíos.
 
@@ -289,7 +271,7 @@ Los mensajes de validación aparecieron en el frontend. Postman respondió HTTP 
 **Descripción**
 Verificar que el sistema rechaza el intento de login de un usuario cuyo estado sea `inactivo` en la tabla `usuarios`, aunque sus credenciales sean correctas.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -298,7 +280,7 @@ Verificar que el sistema rechaza el intento de login de un usuario cuyo estado s
 | Tipo de prueba | Funcional / Control de acceso |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 Existe usuario con `username = 'inactivo'`, contraseña `Inac@1234` y `estado = 'inactivo'` en la tabla `usuarios`.
@@ -335,12 +317,11 @@ El sistema respondió con HTTP 403 y el mensaje `"Usuario inactivo. Contacte al 
 **Evidencias**
 
 | Tipo | Evidencia |
-|---|---|
+|----|---|
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-005-frontend.png) |
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-005-postman.png) |
 
-**Resultado final:** Exitoso
-
+**Resultado final:** ✅ Exitoso
 **Observación:** El sistema bloquea correctamente el acceso a usuarios inactivos antes de verificar la contraseña.
 
 ---
@@ -350,16 +331,16 @@ El sistema respondió con HTTP 403 y el mensaje `"Usuario inactivo. Contacte al 
 **Descripción**
 Verificar que el sistema rechaza el acceso cuando el username es correcto pero la contraseña es incorrecta, sin revelar información sensible sobre la existencia del usuario.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
-|---|---|
+|----|---|
 | Identificador | TC-LOGIN-006 |
 | Nombre | Contraseña incorrecta |
 | Tipo de prueba | Funcional / Seguridad |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 Existe usuario activo con `username = 'admin'` en la tabla `usuarios`.
@@ -390,7 +371,7 @@ Se mostró el mensaje `"Usuario o contrasena incorrectos"`. El mensaje fue idén
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-006-frontend.png) |
 | Postman  | [Ver captura](./evidencias/postman/TC-LOGIN-006-postman.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
 **Observación:** El mensaje unificado para credenciales inválidas es una buena práctica de seguridad que previene la enumeración de usuarios.
 
@@ -401,16 +382,16 @@ Se mostró el mensaje `"Usuario o contrasena incorrectos"`. El mensaje fue idén
 **Descripción**
 Verificar que el sistema maneja correctamente la inyección de caracteres especiales en los campos de login, sin producir errores de servidor.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
-|---|---|
+|----|---|
 | Identificador | TC-LOGIN-007 |
 | Nombre | Inyección de caracteres especiales |
 | Tipo de prueba | Seguridad |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Falló |
+| Estado | ❌ Falló |
 
 **Precondiciones**
 Ninguna sesión activa.
@@ -435,9 +416,9 @@ Ninguna sesión activa.
 - No se accede al sistema ni se genera token.
 
 **Resultado obtenido**
-**El servidor respondió con código HTTP 500 (Internal Server Error).** Aunque Django ORM usa consultas parametrizadas (previniendo SQL Injection real) y no se produjo acceso no autorizado, el error 500 indica que la excepción no fue manejada correctamente. El `LoginSerializer` no sanitizó ni rechazó los caracteres especiales.
+⚠️ **El servidor respondió con código HTTP 500 (Internal Server Error).** Aunque Django ORM usa consultas parametrizadas (previniendo SQL Injection real) y no se produjo acceso no autorizado, el error 500 indica que la excepción no fue manejada correctamente. El `LoginSerializer` no sanitizó ni rechazó los caracteres especiales.
 
-**Severidad:** Alta — El servidor no debe retornar 500 ante entradas inválidas; puede exponer información del stack en logs de producción.
+**Severidad:** 🔴 Alta — El servidor no debe retornar 500 ante entradas inválidas; puede exponer información del stack en logs.
 **Defecto registrado:** BUG-LOGIN-001
 
 **Evidencias**
@@ -447,7 +428,7 @@ Ninguna sesión activa.
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-007-postman.png) |
 | Consola | [Ver captura](./evidencias/frontend/TC-LOGIN-007-console.png) |
 
-**Resultado final:** Fallido
+**Resultado final:** ❌ Fallido
 
 **Observación:** El backend responde 500 en lugar de 400. Se debe agregar validación de caracteres en el `LoginSerializer`. Ver BUG-LOGIN-001 en DEFECTOS.md.
 
@@ -458,7 +439,7 @@ Ninguna sesión activa.
 **Descripción**
 Verificar que al cerrar sesión el token Bearer es invalidado en la tabla `sesiones_api` de PostgreSQL y el usuario no puede seguir accediendo a recursos protegidos con el token revocado.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -467,7 +448,7 @@ Verificar que al cerrar sesión el token Bearer es invalidado en la tabla `sesio
 | Tipo de prueba | Funcional / Seguridad |
 | Prioridad | Alta |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 El usuario `admin` está autenticado y tiene un token Bearer activo (`activa = true` en `sesiones_api`).
@@ -502,7 +483,7 @@ La sesión se cerró correctamente. La petición con el token anterior retornó 
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-008-postman.png) |
 | Database | [Ver captura](./evidencias/database/TC-LOGIN-008-db.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
 **Observación:** El token es invalidado correctamente en `sesiones_api`. La invalidación ocurre en la base de datos, no depende del cliente.
 
@@ -513,7 +494,7 @@ La sesión se cerró correctamente. La petición con el token anterior retornó 
 **Descripción**
 Verificar que las rutas protegidas del sistema no son accesibles sin un token Bearer válido, tanto desde el frontend Angular (Guard) como desde el backend Django (DRF).
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
@@ -522,7 +503,7 @@ Verificar que las rutas protegidas del sistema no son accesibles sin un token Be
 | Tipo de prueba | Seguridad / Funcional |
 | Prioridad | Alta |
 | Módulo | Autenticación / Control de acceso |
-| Estado | Pasó |
+| Estado | ✅ Pasó |
 
 **Precondiciones**
 No existe ninguna sesión activa. El servicio de autenticación de Angular no tiene token almacenado.
@@ -550,27 +531,27 @@ El Angular Guard redirigió a Login. La API respondió con 401. El sistema no pe
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-009-frontend.png) |
 | Postman | [Ver captura](./evidencias/postman/TC-LOGIN-009-postman.png) |
 
-**Resultado final:** Exitoso
+**Resultado final:** ✅ Exitoso
 
 **Observación:** El Angular Route Guard y el middleware de autenticación de DRF protegen correctamente todos los recursos del sistema.
 
 ---
 
-### TC-LOGIN-010A: Comportamiento de backend con sesión expirada
+### TC-LOGIN-010: Comportamiento con sesión expirada
 
 **Descripción**
-Verificar que el backend Django invalida correctamente un token cuya sesión ha expirado en la tabla `sesiones_api` y retorna la respuesta HTTP correspondiente.
+Verificar que el sistema maneja correctamente una sesión cuyo token ha expirado en la tabla `sesiones_api`, solicitando al usuario que vuelva a iniciar sesión.
 
-**Información General**
+**📌 Información General**
 
 | Campo | Detalle |
 |---|---|
-| Identificador | TC-LOGIN-010A |
-| Nombre | Backend: rechazo de token expirado |
+| Identificador | TC-LOGIN-010 |
+| Nombre | Comportamiento con sesión expirada |
 | Tipo de prueba | Funcional / Seguridad |
 | Prioridad | Media |
 | Módulo | Autenticación |
-| Estado | Pasó |
+| Estado | ❌ Falló (parcialmente)|
 
 **Precondiciones**
 El usuario `admin` está autenticado y tiene una sesión activa en `sesiones_api`.
@@ -586,10 +567,11 @@ AND usuario_id = (SELECT id FROM usuarios WHERE username = 'admin');
 ```
 
 **Pasos a seguir**
-1. Autenticarse como administrador y copiar el token Bearer.
+1. Autenticarse como administrador.
 2. Ejecutar la consulta SQL en pgAdmin para adelantar la expiración de la sesión.
-3. En Postman: `GET /api/auth/me/` con el token expirado.
-4. Verificar en pgAdmin:
+3. Sin cerrar el navegador, navegar a cualquier sección que cargue datos de la API (ej. `/dashboard`).
+4. En Postman: `GET /api/auth/me/` con el token expirado.
+5. Verificar en pgAdmin:
    ```sql
    SELECT activa FROM sesiones_api
    WHERE usuario_id = (SELECT id FROM usuarios WHERE username = 'admin')
@@ -597,122 +579,82 @@ AND usuario_id = (SELECT id FROM usuarios WHERE username = 'admin');
    ```
 
 **Resultado esperado**
-- Backend: HTTP 401 con mensaje `"La sesion expiro. Inicie sesion nuevamente."`.
-- En pgAdmin: el campo `activa` pasa a `false`.
+- Backend: HTTP 401 con mensaje `"La sesion expiro. Inicie sesion nuevamente."` y campo `activa` en `false`.
+- Frontend: el `HttpInterceptor` de Angular captura el 401 y redirige a `/login` con el mensaje "Tu sesión ha expirado."
 
 **Resultado obtenido**
-Postman recibió HTTP 401 con el mensaje `"La sesion expiro. Inicie sesion nuevamente."` y en pgAdmin el campo `activa` pasó a `false`.
+✅ **Backend correcto:** Postman recibió HTTP 401 con el mensaje `"La sesion expiro. Inicie sesion nuevamente."` y en pgAdmin el campo `activa` pasó a `false`.
+⚠️ **Frontend fallido:** el Angular frontend no interceptó el 401 devuelto por la API. El usuario permaneció en el dashboard viendo las secciones vacías sin ningún mensaje informativo ni redirección al Login.
 
-**Evidencias**
-
-| Tipo | Evidencia |
-|---|---|
-| Postman | [Ver captura](./evidencias/postman/TC-LOGIN-010-postman.png) |
-| Database | [Ver captura](./evidencias/database/TC-LOGIN-010-db.png) |
-
-**Resultado final:** Exitoso
-
-**Observación:** El backend invalida y detecta la expiración correctamente.
-
----
-
-### TC-LOGIN-010B: Comportamiento de frontend con sesión expirada
-
-**Descripción**
-Verificar que el frontend Angular intercepta el HTTP 401 por sesión expirada y redirige al usuario al login con un mensaje informativo.
-
-**Información General**
-
-| Campo | Detalle |
-|---|---|
-| Identificador | TC-LOGIN-010B |
-| Nombre | Frontend: redirección ante sesión expirada |
-| Tipo de prueba | Funcional / UX |
-| Prioridad | Media |
-| Módulo | Autenticación |
-| Estado | Falló |
-
-**Precondiciones**
-El usuario `admin` está autenticado en el frontend.
-La sesión fue expirada manualmente en pgAdmin (ver TC-LOGIN-010A).
-
-**Pasos a seguir**
-1. Sin cerrar el navegador, navegar a cualquier sección que cargue datos de la API (ej. `/dashboard`).
-2. Observar el comportamiento del frontend.
-
-**Resultado esperado**
-- El `HttpInterceptor` de Angular captura el 401 y redirige a `/login` con el mensaje "Tu sesión ha expirado."
-
-**Resultado obtenido**
-El Angular frontend no interceptó el 401 devuelto por la API. El usuario permaneció en el dashboard viendo las secciones vacías sin ningún mensaje informativo ni redirección al Login.
-
-**Severidad:** Media — El backend maneja correctamente la expiración. El defecto es de UX en el frontend. No representa un riesgo de acceso no autorizado.
+**Severidad:** 🟡 Media — El backend maneja correctamente la expiración. El defecto es de UX en el frontend. No representa acceso no autorizado.
 **Defecto registrado:** BUG-LOGIN-002
 
 **Evidencias**
 
 | Tipo | Evidencia |
 |---|---|
+| Postman | [Ver captura](./evidencias/postman/TC-LOGIN-010-postman.png) |
 | Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-010-frontend.png) |
+| Database | [Ver captura](./evidencias/database/TC-LOGIN-010-db.png) |
 
-**Resultado final:** Fallido
-
-**Observación:** El defecto está en el `HttpInterceptor` de Angular, que no gestiona los 401 por sesión expirada. Ver BUG-LOGIN-002 en DEFECTOS.md.
+**Resultado final:** ❌ Fallido (parcialmente)
+**Observación:** El backend invalida la sesión correctamente. El defecto está en el `HttpInterceptor` de Angular que no gestiona los 401 por sesión expirada. Ver BUG-LOGIN-002 en DEFECTOS.md.
 
 ---
 
-## Resumen de Resultados
+## 📊 Resumen de Resultados
 
 | ID | Descripción | Severidad (si falló) | Estado |
 |----|-------------|---------------------|--------|
-| TC-LOGIN-001 | Login exitoso — administrador | — | Pasó |
-| TC-LOGIN-002 | Login exitoso — Supervisor (permisos restringidos) | — | Pasó |
-| TC-LOGIN-003 | Username no registrado rechazado | — | Pasó |
-| TC-LOGIN-004 | Campos vacíos rechazados | — | Pasó |
-| TC-LOGIN-005 | Usuario inactivo rechazado | — | Pasó |
-| TC-LOGIN-006 | Contraseña incorrecta rechazada | — | Pasó |
-| TC-LOGIN-007 | Inyección de caracteres especiales | Alta | Falló |
-| TC-LOGIN-008 | Cierre de sesión correcto | — | Pasó |
-| TC-LOGIN-009 | Ruta protegida sin token rechazada | — | Pasó |
-| TC-LOGIN-010A | Sesión expirada — backend invalida token correctamente | — | Pasó |
-| TC-LOGIN-010B | Sesión expirada — frontend no redirige al login | Media | Falló |
-| **TOTAL** | | | **9/11 (81.8%)** |
+| TC-LOGIN-001 | Login exitoso — administrador | — | ✅ Pasó |
+| TC-LOGIN-002 | Login exitoso — operador (permisos restringidos) | — | ✅ Pasó |
+| TC-LOGIN-003 | Username no registrado rechazado | — | ✅ Pasó |
+| TC-LOGIN-004 | Campos vacíos rechazados | — | ✅ Pasó |
+| TC-LOGIN-005 | Usuario inactivo rechazado | — | ✅ Pasó |
+| TC-LOGIN-006 | Contraseña incorrecta rechazada | — | ✅ Pasó |
+| TC-LOGIN-007 | Inyección de caracteres especiales | 🔴 Alta | ❌ Falló |
+| TC-LOGIN-008 | Cierre de sesión correcto | — | ✅ Pasó |
+| TC-LOGIN-009 | Ruta protegida sin token rechazada | — | ✅ Pasó |
+| TC-LOGIN-010 | Sesión expirada — frontend no redirige | 🟡 Media | ❌ Falló |
+| **TOTAL** | | | **8/10 (80.0%)** |
 
 ---
 
-## Análisis de Resultados
+## 🔍 Análisis de Resultados
 
 | Aspecto Evaluado | Resultado | Estado |
 |-----------------|-----------|--------|
-| Autenticación con credenciales válidas | Funciona correctamente para todos los roles | Correcto |
-| Rechazo de credenciales inválidas | Mensajes genéricos sin revelar información del usuario | Correcto |
-| Bloqueo de usuario inactivo | HTTP 403 con mensaje claro | Correcto |
-| Validaciones de formulario (frontend) | Campos requeridos validados correctamente | Correcto |
-| Seguridad ante inyección de caracteres | Error 500 en backend — entrada no sanitizada en serializer | Deficiencia |
-| Cierre de sesión e invalidación de token | Campo `activa = false` en `sesiones_api` — correcto | Correcto |
-| Protección de rutas (Angular Guard) | Rutas sin token redirigen correctamente al Login | Correcto |
-| Manejo de sesión expirada en backend | DRF invalida y retorna 401 correctamente | Correcto |
-| Manejo de sesión expirada en frontend | Angular no intercepta el 401 ni redirige al Login | Deficiencia |
-| Mensaje de error unificado (seguridad) | Sin distinción entre username inválido y contraseña incorrecta | Correcto (buena práctica) |
+| Autenticación con credenciales válidas | Funciona correctamente para todos los roles | ✅ Correcto |
+| Rechazo de credenciales inválidas | Mensajes genéricos sin revelar información del usuario | ✅ Correcto |
+| Bloqueo de usuario inactivo | HTTP 403 con mensaje claro | ✅ Correcto |
+| Validaciones de formulario (frontend) | Campos requeridos validados correctamente | ✅ Correcto |
+| Seguridad ante inyección de caracteres | Error 500 en backend — entrada no sanitizada en serializer | ❌ Deficiencia |
+| Cierre de sesión e invalidación de token | Campo `activa = false` en `sesiones_api` — correcto | ✅ Correcto |
+| Protección de rutas (Angular Guard) | Rutas sin token redirigen correctamente al Login | ✅ Correcto |
+| Manejo de sesión expirada en backend | DRF invalida y retorna 401 correctamente | ✅ Correcto |
+| Manejo de sesión expirada en frontend | Angular no intercepta el 401 ni redirige al Login | ❌ Deficiencia |
+| Mensaje de error unificado (seguridad) | Sin distinción entre username inválido y contraseña incorrecta | ✅ Correcto (buena práctica) |
 
 **Hallazgos:**
-
 - **BUG-LOGIN-001:** El `LoginSerializer` no sanitiza caracteres especiales, causando un error 500 no controlado. Django ORM previene SQL Injection real, pero el 500 es inaceptable en producción.
 - **BUG-LOGIN-002:** El frontend Angular carece de un `HttpInterceptor` que maneje los 401 por sesión expirada. El backend funciona correctamente; el problema es exclusivamente de UX en el cliente.
 
 ---
 
-## Recomendaciones
+## 💡 Recomendaciones
 
-| N.° | Prioridad | Descripción | Área responsable |
-|-----|-----------|-------------|-----------------|
-| 1 | Crítico | Agregar validación de caracteres permitidos en el `LoginSerializer` de DRF: `username = serializers.RegexField(regex=r'^[\w.@+-]+$')`. Esto garantiza que entradas malformadas retornen HTTP 400 en lugar de 500. | Backend |
-| 2 | Importante | Implementar un `HttpInterceptor` en Angular que capture respuestas HTTP 401 y ejecute: limpiar el token del servicio de autenticación y redirigir a `/login` mostrando el mensaje "Tu sesión ha expirado. Por favor, inicia sesión nuevamente." | Frontend |
-| 3 | Importante | Implementar un mecanismo de bloqueo temporal después de N intentos fallidos de login (ej. bloqueo de 5 minutos tras 5 intentos fallidos) para prevenir ataques de fuerza bruta. Registrar los intentos en una tabla de auditoría en PostgreSQL. | Backend |
-| 4 | Mejora | Registrar en logs todos los intentos de login fallidos, incluyendo username, IP de origen, `user_agent` y timestamp, para detección temprana de ataques. | Backend |
-| 5 | Mejora | Agregar un indicador visual del tiempo restante de sesión y una advertencia cuando queden menos de 30 minutos para que expire. | Frontend |
-| 6 | Buenas prácticas | Implementar HTTPS en todos los ambientes (incluyendo desarrollo local) para proteger el token Bearer y las credenciales en tránsito. | Backend / Infraestructura |
+1. **[CRÍTICO - Seguridad]** Agregar validación de caracteres permitidos en el `LoginSerializer` de DRF: `username = serializers.RegexField(regex=r'^[\w.@+-]+$')`. Esto garantiza que entradas malformadas retornen HTTP 400, no 500.
+
+2. **[IMPORTANTE - UX]** Crear un `HttpInterceptor` en Angular que capture respuestas con código 401 y ejecute: limpiar el token del servicio de autenticación y redirigir a `/login` mostrando el mensaje "Tu sesión ha expirado. Por favor, inicia sesión nuevamente."
+
+3. **[IMPORTANTE - Seguridad]** Implementar un mecanismo de **bloqueo temporal** después de N intentos fallidos de login (ej. bloqueo de 5 minutos tras 5 intentos fallidos) para prevenir ataques de fuerza bruta. Registrar los intentos en una tabla de auditoría en PostgreSQL.
+
+4. **[MEJORA - Seguridad]** Registrar en logs todos los intentos de login fallidos, incluyendo username, IP de origen, `user_agent` y timestamp, para detección temprana de ataques.
+
+5. **[MEJORA - UX]** Agregar un indicador visual del tiempo restante de sesión y una advertencia cuando queden menos de 30 minutos para que expire.
+
+6. **[BUENAS PRÁCTICAS]** Implementar HTTPS en todos los ambientes (incluyendo desarrollo local) para proteger el token Bearer y las credenciales en tránsito.
 
 ---
 
-*© 2026 SofInventory — Área de Calidad de Software | Versión 1.1.0*
+*© 2026 SofInventory — Área de Calidad de Software | Versión 1.0.0*
