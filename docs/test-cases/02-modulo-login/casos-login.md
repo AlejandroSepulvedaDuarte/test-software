@@ -101,9 +101,9 @@ El sistema redirigió correctamente al dashboard. El token Bearer fue generado y
 | Tipo | Evidencia |
 |---|---|
 
-| Frontend | [![Miniatura del formulario](./evidencias/frontend/TC-LOGIN-001-frontend.png)](./evidencias/frontend/TC-LOGIN-001-frontend.png) |
-| Postman  | [![Miniatura Postman](./evidencias/postman/TC-LOGIN-001-postman.png)](./evidencias/postman/TC-LOGIN-001-postman.png) |
-| Database | [![Miniatura Base de Datos](./evidencias/database/TC-LOGIN-001-db.png)](./evidencias/database/TC-LOGIN-001-db.png) |
+![Ver captura](./evidencias/frontend/TC-LOGIN-001-frontend.png)
+![Miniatura Postman](./evidencias/postman/TC-LOGIN-001-postman.png)
+![Miniatura Base de Datos](./evidencias/database/TC-LOGIN-001-db.png)
 
 *📌 Clic en cualquier imagen para ver a pantalla completa*
 
