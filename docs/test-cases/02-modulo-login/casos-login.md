@@ -64,6 +64,20 @@ El sistema invalida todas las sesiones activas previas del usuario al hacer logi
 
 ### TC-LOGIN-001: Login exitoso como administrador
 
+| Campo | Detalle |
+|-------|---------|
+| **Identificador** | TC-LOGIN-001 |
+| **Descripción** | Verificar que un usuario con rol ADMINISTRADOR puede autenticarse correctamente y acceder al dashboard con todos los permisos habilitados. |
+| **Precondiciones** | Existe usuario `admin@sofinventory.com` con contraseña `Admin@1234` y rol ADMIN activo en el sistema. El servidor y la base de datos están en línea. |
+| **Datos de entrada** | Email: `admin@sofinventory.com` / Contraseña: `Admin@1234` |
+| **Pasos a seguir** | 1. Navegar a la URL del sistema (ej. `http://localhost:4200`). 2. Ingresar el email y contraseña del administrador. 3. Clic en "Iniciar Sesión". 4. Verificar redirección al dashboard. 5. Verificar que el menú muestra las opciones de administración. |
+| **Resultado esperado** | Redirección exitosa al dashboard de administrador. Token JWT generado y almacenado. Menú completo visible con opciones de administración (Usuarios, Configuración). |
+| **Resultado obtenido** | El sistema redirigió correctamente al dashboard. El token JWT fue generado y almacenado en localStorage. El menú de administración fue visible. |
+| **Estado** | ✅ Pasó |
+| **Evidencias** | Evidencia 1/3 - Frontend (Angular): `./evidencias/frontend/TC-LOGIN-001-frontend.png` · Evidencia 2/3 - Postman (Response 200): `./evidencias/postman/TC-LOGIN-001-postman.png` · Evidencia 3/3 - JWT decodificado: `./evidencias/frontend/TC-LOGIN-001-jwt.png` |
+
+---
+
 **Descripción**
 Verificar que un usuario con rol Administrador puede autenticarse correctamente usando su username y contraseña, y acceder al dashboard con todos los permisos habilitados.
 
