@@ -117,7 +117,7 @@ El sistema mostró el mensaje de éxito y el usuario quedó registrado en la tab
 
 | Tipo | Evidencia |
 |---|---|
-| Frontend | [Ver captura](./evidencias/frontend/TC-USR-001-frontend.png) |
+[![Miniatura del formulario](./evidencias/frontend/TC-USR-001-frontend.png)](./evidencias/frontend/TC-USR-001-frontend.png)
 | Postman  | [Ver captura](./evidencias/postman/TC-USR-001-postman.png) |
 | Database | [Ver captura](./evidencias/database/TC-USR-001-db.png) |
 
