@@ -1,11 +1,11 @@
 # 🧪 Casos de Prueba — Módulo Login
 
-> **Versión:** 1.0.0
-> **Módulo:** Login / Autenticación
-> **Prefijo de código:** TC-LOGIN
-> **Total de casos:** 10
-> **Fecha:** 15 de mayo de 2026
-> **Autor:** Alejandro Sepúlveda Duarte
+| Versión | 1.0.0 |
+| Módulo | Login / Autenticación |
+| Prefijo de código | TC-LOGIN |
+| Total de casos | 10 |
+| Fecha | 15 de mayo de 2026 |
+| Autor | Alejandro Sepúlveda Duarte |
 
 ---
 
@@ -100,10 +100,9 @@ El sistema redirigió correctamente al dashboard. El token Bearer fue generado y
 
 | Tipo | Evidencia |
 |---|---|
-
-![Ver captura](./evidencias/frontend/TC-LOGIN-001-frontend.png)
-![Miniatura Postman](./evidencias/postman/TC-LOGIN-001-postman.png)
-![Miniatura Base de Datos](./evidencias/database/TC-LOGIN-001-db.png)
+| Frontend | [![Miniatura del formulario](./evidencias/frontend/TC-LOGIN-001-frontend.png)](./evidencias/frontend/TC-LOGIN-001-frontend.png) |
+| Postman  | [![Miniatura Postman](./evidencias/postman/TC-LOGIN-001-postman.png)](./evidencias/postman/TC-LOGIN-001-postman.png) |
+| Database | [![Miniatura Base de Datos](./evidencias/database/TC-LOGIN-001-db.png)](./evidencias/database/TC-LOGIN-001-db.png) |
 
 *📌 Clic en cualquier imagen para ver a pantalla completa*
 
@@ -609,7 +608,7 @@ AND usuario_id = (SELECT id FROM usuarios WHERE username = 'admin');
 | ID | Descripción | Severidad (si falló) | Estado |
 |----|-------------|---------------------|--------|
 | TC-LOGIN-001 | Login exitoso — administrador | — | ✅ Pasó |
-| TC-LOGIN-002 | Login exitoso — operador (permisos restringidos) | — | ✅ Pasó |
+| TC-LOGIN-002 | Login exitoso — supervisor (permisos restringidos) | — | ✅ Pasó |
 | TC-LOGIN-003 | Username no registrado rechazado | — | ✅ Pasó |
 | TC-LOGIN-004 | Campos vacíos rechazados | — | ✅ Pasó |
 | TC-LOGIN-005 | Usuario inactivo rechazado | — | ✅ Pasó |
@@ -645,17 +644,14 @@ AND usuario_id = (SELECT id FROM usuarios WHERE username = 'admin');
 
 ## 💡 Recomendaciones
 
-1. **[CRÍTICO - Seguridad]** Agregar validación de caracteres permitidos en el `LoginSerializer` de DRF: `username = serializers.RegexField(regex=r'^[\w.@+-]+$')`. Esto garantiza que entradas malformadas retornen HTTP 400, no 500.
-
-2. **[IMPORTANTE - UX]** Crear un `HttpInterceptor` en Angular que capture respuestas con código 401 y ejecute: limpiar el token del servicio de autenticación y redirigir a `/login` mostrando el mensaje "Tu sesión ha expirado. Por favor, inicia sesión nuevamente."
-
-3. **[IMPORTANTE - Seguridad]** Implementar un mecanismo de **bloqueo temporal** después de N intentos fallidos de login (ej. bloqueo de 5 minutos tras 5 intentos fallidos) para prevenir ataques de fuerza bruta. Registrar los intentos en una tabla de auditoría en PostgreSQL.
-
-4. **[MEJORA - Seguridad]** Registrar en logs todos los intentos de login fallidos, incluyendo username, IP de origen, `user_agent` y timestamp, para detección temprana de ataques.
-
-5. **[MEJORA - UX]** Agregar un indicador visual del tiempo restante de sesión y una advertencia cuando queden menos de 30 minutos para que expire.
-
-6. **[BUENAS PRÁCTICAS]** Implementar HTTPS en todos los ambientes (incluyendo desarrollo local) para proteger el token Bearer y las credenciales en tránsito.
+| # | Prioridad | Categoría | Recomendación |
+|---|-----------|-----------|---------------|
+| 1 | 🔴 Crítico | Seguridad | Agregar validación de caracteres en el `LoginSerializer`: `username = serializers.RegexField(regex=r'^[\w.@+-]+$')` para retornar HTTP 400 ante entradas malformadas. |
+| 2 | 🟠 Importante | UX | Implementar un `HttpInterceptor` en Angular que capture 401, limpie el token y redirija a `/login` con el mensaje de sesión expirada. |
+| 3 | 🟠 Importante | Seguridad | Agregar bloqueo temporal tras N intentos fallidos (ej. 5 min tras 5 intentos) y registrar los intentos en una tabla de auditoría en PostgreSQL. |
+| 4 | 🟡 Mejora | Seguridad | Registrar en logs todos los intentos fallidos: username, IP, `user_agent` y timestamp. |
+| 5 | 🟡 Mejora | UX | Mostrar indicador visual del tiempo restante de sesión y advertencia al quedar menos de 30 minutos. |
+| 6 | 🔵 Buenas prácticas | Seguridad | Implementar HTTPS en todos los ambientes para proteger el token Bearer y las credenciales en tránsito. |
 
 ---
 

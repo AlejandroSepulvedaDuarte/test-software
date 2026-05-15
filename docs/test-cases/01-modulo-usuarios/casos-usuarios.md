@@ -26,7 +26,7 @@
 
 ---
 
-## Plantilla de Caso de Prueba
+## 📋 Plantilla de Caso de Prueba
 
 Cada caso de prueba sigue esta estructura estándar:
 
@@ -62,7 +62,7 @@ El módulo de Usuarios permite al administrador registrar nuevas cuentas en el s
 **Descripción**
 Verificar que un administrador puede crear un nuevo usuario con rol Administrador ingresando todos los datos requeridos correctamente.
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -202,7 +202,7 @@ El usuario fue creado exitosamente. Al autenticarse, el menú de administración
 **Descripción**
 Verificar que el sistema no permite registrar dos usuarios con el mismo username, ya que el campo tiene restricción `UNIQUE` en la tabla `usuarios` de PostgreSQL.
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -256,7 +256,7 @@ El servidor Django respondió con HTTP 400 y el error `{"username": ["Ya existe 
 **Descripción**
 Verificar que el sistema rechaza contraseñas que no cumplen la política de seguridad (mínimo 8 caracteres, al menos una mayúscula, un número y un carácter especial).
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -307,7 +307,7 @@ El formulario Angular mostró el indicador de contraseña débil y bloqueó el e
 **Descripción**
 Verificar que el sistema rechaza la creación de un usuario cuando el campo `numero_documento` contiene caracteres no numéricos.
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -367,7 +367,7 @@ El tester está autenticado como administrador.
 **Descripción**
 Verificar que el sistema no permite crear un usuario si se omiten los campos obligatorios del formulario.
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -416,7 +416,7 @@ Los mensajes de validación aparecieron en el frontend para todos los campos req
 **Descripción**
 Verificar que la contraseña del usuario es almacenada en PostgreSQL utilizando el algoritmo PBKDF2-SHA256 de Django y nunca en texto plano.
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -469,7 +469,7 @@ El campo `password` contenía el hash completo en formato PBKDF2-SHA256. La cont
 **Descripción**
 Verificar que un usuario recién creado puede autenticarse exitosamente en el módulo de Login usando su username y contraseña. (Caso de integración: Usuarios → Login)
 
-**Información General**
+** 📌 Información general**
 
 | Campo | Detalle |
 |---|---|
@@ -517,7 +517,7 @@ El usuario accedió correctamente. Se generó un token Bearer válido almacenado
 
 ---
 
-## Resumen de Resultados
+## 📊 Resumen de Resultados
 
 | ID | Descripción | Severidad (si falló) | Estado |
 |----|-------------|---------------------|--------|
@@ -533,7 +533,7 @@ El usuario accedió correctamente. Se generó un token Bearer válido almacenado
 
 ---
 
-## Análisis de Resultados
+## 🔍 Análisis de Resultados
 
 | Aspecto | Resultado | Evaluación |
 |---------|-----------|------------|
@@ -549,7 +549,7 @@ El usuario accedió correctamente. Se generó un token Bearer válido almacenado
 
 ---
 
-## Recomendaciones
+## 💡 Recomendaciones
 
 | N.° | Prioridad | Descripción | Área responsable |
 |-----|-----------|-------------|-----------------|
