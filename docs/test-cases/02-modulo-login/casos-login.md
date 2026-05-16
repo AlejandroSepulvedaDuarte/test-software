@@ -1,5 +1,6 @@
 # 🧪 Casos de Prueba — Módulo Login
 
+|---|---|
 | Versión | 1.0.0 |
 | Módulo | Login / Autenticación |
 | Prefijo de código | TC-LOGIN |
