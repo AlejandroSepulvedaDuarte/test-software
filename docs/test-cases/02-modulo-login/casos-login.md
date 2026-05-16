@@ -36,7 +36,8 @@ El sistema invalida todas las sesiones activas previas del usuario al hacer logi
 **Endpoints involucrados:**
 - `POST /api/auth/login/` — Autenticación y obtención del token Bearer
 - `POST /api/auth/logout/` — Cierre de sesión / invalidación del token
-- `GET /api/auth/me/` — Verificación del token activo y datos del usuario
+- `GET /api/auth/me/` — Verificación del token activo y retorno de los datos del usuario autenticado (username, rol, estado)
+- `GET /api/usuarios/listar/` — Listado de usuarios (solo Administrador, retorna 403 para otros roles)
 
 ---
 
@@ -136,11 +137,12 @@ Existe usuario con `username = 'sebascal'`, contraseña `sebas123`, rol Supervis
 { "username": "sebascal", "password": "sebas123" }
 ```
 
-**Endpoints involucrados:**
-- `POST /api/auth/login/` — Autenticación y obtención del token Bearer
-- `POST /api/auth/logout/` — Cierre de sesión / invalidación del token
-- `GET /api/auth/me/` — Verificación del token activo y retorno de los datos del usuario autenticado (username, rol, estado)
-- `GET /api/usuarios/listar/` — Listado de usuarios (solo Administrador, retorna 403 para otros roles)
+**Pasos a seguir**
+1. Ingresar las credenciales del Supervisor en el formulario de login.
+2. Clic en "Iniciar Sesión".
+3. Verificar redirección al dashboard.
+4. Verificar que el menú NO muestra opciones de administración de usuarios.
+5. En Postman: verificar que `GET /api/usuarios/listar/` con el token del Supervisor devuelve HTTP 403.
 
 **Resultado esperado**
 - HTTP 200. Acceso exitoso.
@@ -154,9 +156,9 @@ Acceso exitoso. El menú de administración no fue visible para el Supervisor. L
 **Evidencias**
 
 | Tipo | Evidencia |
-|---|---|
-| Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-002-frontend.png) |
-| Postman | [Ver captura](./evidencias/postman/TC-LOGIN-002-postman.png) |
+|------|-----------|
+| Frontend | [![Captura frontend TC-LOGIN-002](./evidencias/frontend/TC-LOGIN-002-frontend.png)](./evidencias/frontend/TC-LOGIN-002-frontend.png) |
+| Postman | [![Captura Postman TC-LOGIN-002](./evidencias/postman/TC-LOGIN-002-postman.png)](./evidencias/postman/TC-LOGIN-002-postman.png) |
 
 **Resultado final:** ✅ Exitoso
 
@@ -206,9 +208,9 @@ Se mostró el mensaje `"Usuario o contrasena incorrectos"`. El servidor respondi
 **Evidencias**
 
 | Tipo | Evidencia |
-|---|---|
-| Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-003-frontend.png) |
-| Postman  | [Ver captura](./evidencias/postman/TC-LOGIN-003-postman.png) |
+|------|-----------|
+| Frontend | [![Captura frontend TC-LOGIN-003](./evidencias/frontend/TC-LOGIN-003-frontend.png)](./evidencias/frontend/TC-LOGIN-003-frontend.png) |
+| Postman | [![Captura Postman TC-LOGIN-003](./evidencias/postman/TC-LOGIN-003-postman.png)](./evidencias/postman/TC-LOGIN-003-postman.png) |
 
 **Resultado final:** ✅ Exitoso
 
@@ -237,13 +239,19 @@ Ninguna sesión activa en el sistema.
 
 **Datos de entrada**
 - Frontend: formulario completamente en blanco.
-- Postman: body `{}`
+- Postman: body 
+   ```json
+   { "username": "", "password": "" }
+   ```
 
 **Pasos a seguir**
 1. Acceder al formulario de Login.
 2. No ingresar ningún dato.
 3. Clic en "Iniciar Sesión".
-4. Desde Postman: `POST /api/auth/login/` con body `{}`.
+4. Desde Postman: `POST /api/auth/login/` con body
+ ```json
+ { "username": "", "password": "" }
+ ```
 
 **Resultado esperado**
 - Frontend: campos marcados como inválidos con mensajes de validación visibles.
@@ -256,9 +264,9 @@ Los mensajes de validación aparecieron en el frontend. Postman respondió HTTP 
 **Evidencias**
 
 | Tipo | Evidencia |
-|---|---|
-| Frontend | [Ver captura](./evidencias/frontend/TC-LOGIN-004-frontend.png) |
-| Postman | [Ver captura](./evidencias/postman/TC-LOGIN-004-postman.png) |
+|------|-----------|
+| Frontend | [![Captura frontend TC-LOGIN-004](./evidencias/frontend/TC-LOGIN-004-frontend.png)](./evidencias/frontend/TC-LOGIN-004-frontend.png) |
+| Postman | [![Captura Postman TC-LOGIN-004](./evidencias/postman/TC-LOGIN-004-postman.png)](./evidencias/postman/TC-LOGIN-004-postman.png) |
 
 **Resultado final:** ✅ Exitoso
 

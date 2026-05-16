@@ -1,11 +1,11 @@
 # 🧪 Casos de Prueba — Módulo Usuarios
 
-> **Versión:** 1.0.0
-> **Módulo:** Gestión de Usuarios
-> **Prefijo de código:** TC-USR
-> **Total de casos:** 8
-> **Fecha:** 14 de mayo de 2026
-> **Autor:** Alejandro Sepúlveda Duarte
+> **Versión:** 1.0.0 <br>
+> **Módulo:** Gestión de Usuarios <br>
+> **Prefijo de código:** TC-USR <br>
+> **Total de casos:** 8 <br>
+> **Fecha:** 15 de mayo de 2026 <br>
+> **Autor:** Lucy Estefany Izquierdo Jaramillo
 
 ---
 
