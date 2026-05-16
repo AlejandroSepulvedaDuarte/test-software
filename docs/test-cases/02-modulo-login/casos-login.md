@@ -1,12 +1,11 @@
 # 🧪 Casos de Prueba — Módulo Login
-| | |
-|---|---|
-| Versión | 1.0.0 |
-| Módulo | Login / Autenticación |
-| Prefijo de código | TC-LOGIN |
-| Total de casos | 10 |
-| Fecha | 15 de mayo de 2026 |
-| Autor | Alejandro Sepúlveda Duarte |
+
+> **Versión:** 1.0.0 <br>
+> **Módulo:** Login / Autenticación <br>
+> **Prefijo de código:** TC-LOGIN <br>
+> **Total de casos:** 10 <br>
+> **Fecha:** 15 de mayo de 2026 <br>
+> **Autor:** Alejandro Sepúlveda Duarte
 
 ---
 
