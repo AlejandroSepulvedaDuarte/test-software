@@ -136,12 +136,11 @@ Existe usuario con `username = 'sebascal'`, contraseña `sebas123`, rol Supervis
 { "username": "sebascal", "password": "sebas123" }
 ```
 
-**Pasos a seguir**
-1. Ingresar las credenciales del Supervisor en el formulario de login.
-2. Clic en "Iniciar Sesión".
-3. Verificar redirección al dashboard.
-4. Verificar que el menú NO muestra opciones de administración de usuarios.
-5. En Postman: verificar que `GET /api/usuarios/listar/` con el token del Supervisor devuelve HTTP 403.
+**Endpoints involucrados:**
+- `POST /api/auth/login/` — Autenticación y obtención del token Bearer
+- `POST /api/auth/logout/` — Cierre de sesión / invalidación del token
+- `GET /api/auth/me/` — Verificación del token activo y retorno de los datos del usuario autenticado (username, rol, estado)
+- `GET /api/usuarios/listar/` — Listado de usuarios (solo Administrador, retorna 403 para otros roles)
 
 **Resultado esperado**
 - HTTP 200. Acceso exitoso.
