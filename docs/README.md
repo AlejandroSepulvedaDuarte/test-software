@@ -1,9 +1,9 @@
 # 📋 SofInventory — Documentación de Pruebas de Software
 
-> **Versión:** 1.0.0
-> **Fecha de elaboración:** 15 de mayo de 2026
-> **Última actualización:** 16 de mayo de 2026
-> **Estado del documento:** ✅ Aprobado para revisión
+> **Versión:** 1.0.0 <br>
+> **Fecha de elaboración:** 15 de mayo de 2026 <br>
+> **Última actualización:** 16 de mayo de 2026 <br>
+> **Estado del documento:** ✅ Aprobado para revisión <br>
 > **Equipo QA:** Alejandro Sepúlveda Duarte & Lucy Estefany Izquierdo Jaramillo — Calidad de Software, SofInventory
 
 ---
@@ -44,7 +44,7 @@ El sistema está construido sobre una arquitectura cliente-servidor:
 |------|------------|
 | Frontend | Angular 19 |
 | Backend / API | Django 6.0.4 + Django REST Framework 3.17.1 |
-| Base de datos | PostgreSQL 15+ |
+| Base de datos | PostgreSQL 18+ |
 | Autenticación | Token Bearer propio (tabla `sesiones_api`), expiración 12 horas |
 | Documentación API | Postman Collections |
 | Gestor de BD (QA) | pgAdmin 4 |
@@ -89,7 +89,7 @@ Verificar y validar el correcto funcionamiento de los módulos de **Login** y **
 | # | Herramienta | Versión | Propósito |
 |---|-------------|---------|-----------|
 | 1 | **Angular** | 19.x | Pruebas de interfaz de usuario (Frontend) |
-| 2 | **Postman** | 10.x | Pruebas de API REST (endpoints Django REST Framework) |
+| 2 | **Postman** | 12.x | Pruebas de API REST (endpoints Django REST Framework) |
 | 3 | **pgAdmin 4** | Latest | Verificación de integridad en base de datos PostgreSQL |
 | 4 | **Chrome DevTools** | Latest | Inspección de red, localStorage y headers HTTP |
 | 5 | **Google Chrome** | 124.x | Navegador para pruebas de interfaz |
