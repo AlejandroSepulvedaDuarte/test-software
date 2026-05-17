@@ -1,10 +1,10 @@
 # 📋 SofInventory — Documentación de Pruebas de Software
 
 > **Versión:** 1.0.0
-> **Fecha de elaboración:** 14 de mayo de 2026
-> **Última actualización:** 14 de mayo de 2026
+> **Fecha de elaboración:** 15 de mayo de 2026
+> **Última actualización:** 16 de mayo de 2026
 > **Estado del documento:** ✅ Aprobado para revisión
-> **Equipo QA:** Área de Calidad de Software — SofInventory
+> **Equipo QA:** Alejandro Sepúlveda Duarte & Lucy Estefany Izquierdo Jaramillo — Calidad de Software, SofInventory
 
 ---
 
@@ -59,7 +59,7 @@ Verificar y validar el correcto funcionamiento de los módulos de **Login** y **
 ### Objetivos Específicos
 - Validar que el módulo de autenticación permita el acceso únicamente a usuarios registrados con credenciales correctas (username + contraseña).
 - Verificar que las contraseñas sean almacenadas con hash seguro (PBKDF2-SHA256) y nunca en texto plano.
-- Comprobar que el sistema gestione correctamente los roles y permisos de usuarios (Administrador / Operador).
+- Comprobar que el sistema gestione correctamente los roles y permisos de usuarios (Administrador / Supervisor).
 - Verificar la integridad de los datos almacenados en PostgreSQL mediante consultas directas en pgAdmin.
 - Detectar posibles fallos de seguridad como inyección de caracteres especiales o acceso no autorizado.
 - Evaluar la experiencia de usuario (UX) en los flujos de login y administración de usuarios.
@@ -100,8 +100,8 @@ Verificar y validar el correcto funcionamiento de los módulos de **Login** y **
 
 | Módulo | Total TC | ✅ Pasaron | ❌ Fallaron | ⚠️ Bloqueados | % Éxito |
 |--------|----------|-----------|-----------|--------------|---------:|
-| 01 - Usuarios | 8 | 7 | 1 | 0 | 87.5% |
-| 02 - Login | 10 | 8 | 2 | 0 | 80.0% |
+| 01 - Usuarios | 8 | 6 | 2 | 0 | 75.0% |
+| 02 - Login | 10 | 9 | 1 | 0 | 90.0% |
 | **TOTAL** | **18** | **15** | **3** | **0** | **83.3%** |
 
 ---
@@ -118,7 +118,7 @@ Verificar y validar el correcto funcionamiento de los módulos de **Login** y **
 ### 🏁 Decisión Final del Proceso Evaluativo
 
 > **CONDICIONALMENTE APROBADO** para ambiente de pruebas de aceptación (UAT).
-> Se recomienda corregir los **3 defectos encontrados** (2 en Login, 1 en Usuarios) antes del despliegue en producción. El sistema demuestra una base funcional sólida con áreas de mejora en seguridad de entradas y manejo de sesiones en el frontend.
+> Se recomienda corregir los **3 defectos encontrados** (1 en Login, 1 en Usuarios) antes del despliegue en producción. El sistema demuestra una base funcional sólida con áreas de mejora en seguridad de entradas y manejo de sesiones en el frontend.
 
 ---
 
@@ -139,7 +139,7 @@ Verificar y validar el correcto funcionamiento de los módulos de **Login** y **
 
 | Versión | Fecha | Autor | Cambios |
 |---------|-------|-------|---------|
-| 1.0.0 | 14/05/2026 | Equipo QA | Creación inicial del plan de pruebas |
+| 1.0.0 | 15/05/2026 | Equipo QA | Creación inicial del plan de pruebas |
 
 ---
 

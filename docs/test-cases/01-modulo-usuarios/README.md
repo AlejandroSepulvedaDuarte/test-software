@@ -1,9 +1,9 @@
 # 👤 Módulo 01 — Gestión de Usuarios
 
-> **Versión:** 1.0.0
-> **Módulo:** Usuarios
-> **Código de módulo:** MOD-USR
-> **Fecha:** 14 de mayo de 2026
+> **Versión:** 1.0.0 <br>
+> **Módulo:** Usuarios <br>
+> **Código de módulo:** MOD-USR <br>
+> **Fecha:** 15 de mayo de 2026
 
 ---
 
@@ -76,7 +76,7 @@ Este módulo es la base del sistema de autenticación: **un usuario debe existir
 | TC-USR-001 | Creación exitosa de usuario administrador | ✅ Pasó |
 | TC-USR-002 | Creación exitosa de usuario operador | ✅ Pasó |
 | TC-USR-003 | Username duplicado rechazado | ✅ Pasó |
-| TC-USR-004 | Contraseña que no cumple política de seguridad | ✅ Pasó |
+| TC-USR-004 | Contraseña que no cumple política de seguridad | ❌ Falló |
 | TC-USR-005 | Número de documento con formato inválido | ❌ Falló |
 | TC-USR-006 | Campos obligatorios vacíos | ✅ Pasó |
 | TC-USR-007 | Verificación de contraseña hasheada en BD | ✅ Pasó |

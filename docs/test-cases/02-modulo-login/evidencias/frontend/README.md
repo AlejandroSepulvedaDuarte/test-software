@@ -16,7 +16,7 @@ TC-LOGIN-{NRO}-network.png      → Panel de red (cuando aplique)
 | Archivo | Caso | Descripción |
 |---------|------|-------------|
 | `TC-LOGIN-001-frontend.png` | TC-LOGIN-001 | Dashboard de admin tras login exitoso — menú completo visible |
-| `TC-LOGIN-002-frontend.png` | TC-LOGIN-002 | Dashboard de operador — opciones de administración ocultas |
+| `TC-LOGIN-002-frontend.png` | TC-LOGIN-002 | Dashboard de supervisor — opciones de administración ocultas |
 | `TC-LOGIN-003-frontend.png` | TC-LOGIN-003 | Mensaje "Usuario o contraseña incorrectos" — username no existe |
 | `TC-LOGIN-004-frontend.png` | TC-LOGIN-004 | Campos vacíos con mensajes de validación |
 | `TC-LOGIN-005-frontend.png` | TC-LOGIN-005 | Mensaje de error "Usuario inactivo. Contacte al administrador." |

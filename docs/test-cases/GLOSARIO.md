@@ -1,6 +1,6 @@
 # 📖 Glosario y Ambiente de Pruebas — SofInventory
 
-> **Versión:** 1.0.0 | **Fecha:** 14 de mayo de 2026
+> **Versión:** 1.0.0 | **Fecha:** 15 de mayo de 2026
 
 ---
 
@@ -27,9 +27,9 @@
 
 | Rol | Username | Email | Contraseña | Estado |
 |-----|----------|-------|-----------|--------|
-| Administrador | `admin` | `admin@sofinventory.com` | `Admin@1234` | Activo |
-| Operador | `laura.gomez` | `laura.gomez@sofinventory.com` | `Oper@5678` | Activo |
-| Usuario inactivo | `inactivo` | `inactivo@sofinventory.com` | `Inac@1234` | Inactivo |
+| Administrador | `admin` | `admin@sofinventory.com` | `Admin123` | Activo |
+| Supervisor | `sebascal` | `sebas@gmail.com` | `sebas123` | Activo |
+| Usuario inactivo | `sebascal` | `sebas@gmail.com` | `sebas123` | Inactivo |
 
 > ⚠️ Estos datos son exclusivamente para el ambiente de pruebas. No deben usarse en producción.
 
@@ -113,7 +113,7 @@ pbkdf2_sha256$<iteraciones>$<salt>$<hash>
 | **Interceptor (Angular)** | Mecanismo de Angular para interceptar peticiones/respuestas HTTP |
 | **sesiones_api** | Tabla en PostgreSQL que almacena los tokens activos de cada usuario |
 | **usuarios** | Tabla principal en PostgreSQL con los datos del usuario (modelo `Usuario`) |
-| **roles** | Tabla en PostgreSQL que almacena los roles disponibles (ej. Administrador, Operador) |
+| **roles** | Tabla en PostgreSQL que almacena los roles disponibles (ej. Administrador, Supervisor) |
 | **HTTP 200** | OK — Petición exitosa |
 | **HTTP 201** | Created — Recurso creado exitosamente |
 | **HTTP 400** | Bad Request — Petición mal formada o datos inválidos |

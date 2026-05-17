@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "Admin@1234"
+  "password": "Admin123"
 }
 ```
 
@@ -55,7 +55,7 @@ Authorization: Bearer {{access_token}}
 | Archivo | Caso | Código HTTP esperado |
 |---------|------|---------------------|
 | `TC-LOGIN-001-postman.png` | TC-LOGIN-001 | 200 OK + access_token (admin) |
-| `TC-LOGIN-002-postman.png` | TC-LOGIN-002 | 200 OK + access_token (operador) + verificación 403 en `/api/usuarios/listar/` |
+| `TC-LOGIN-002-postman.png` | TC-LOGIN-002 | 200 OK + access_token (supervisor) + verificación 403 en `/api/usuarios/listar/` |
 | `TC-LOGIN-003-postman.png` | TC-LOGIN-003 | 401 Unauthorized — username no registrado |
 | `TC-LOGIN-004-postman.png` | TC-LOGIN-004 | 400 Bad Request — campos vacíos |
 | `TC-LOGIN-005-postman.png` | TC-LOGIN-005 | 403 Forbidden — usuario inactivo |

@@ -1,9 +1,9 @@
 # 🔐 Módulo 02 — Login / Autenticación
 
-> **Versión:** 1.0.0
-> **Módulo:** Login y Autenticación
-> **Código de módulo:** MOD-LOGIN
-> **Fecha:** 14 de mayo de 2026
+> **Versión:** 1.0.0 <br>
+> **Módulo:** Login y Autenticación <br>
+> **Código de módulo:** MOD-LOGIN <br>
+> **Fecha:** 15 de mayo de 2026
 
 ---
 
@@ -75,17 +75,17 @@ Este módulo es crítico para la seguridad del sistema: un fallo en la autentica
 | ID | Nombre del Caso | Estado |
 |----|----------------|--------|
 | TC-LOGIN-001 | Login exitoso como administrador | ✅ Pasó |
-| TC-LOGIN-002 | Login exitoso como operador | ✅ Pasó |
+| TC-LOGIN-002 | Login exitoso como supervisor (permisos restringidos) | ✅ Pasó |
 | TC-LOGIN-003 | Login con username no registrado | ✅ Pasó |
 | TC-LOGIN-004 | Login con campos vacíos | ✅ Pasó |
 | TC-LOGIN-005 | Login con usuario inactivo | ✅ Pasó |
 | TC-LOGIN-006 | Login con contraseña incorrecta | ✅ Pasó |
-| TC-LOGIN-007 | Inyección de caracteres especiales | ❌ Falló |
+| TC-LOGIN-007 | Inyección de caracteres especiales | ✅ Pasó |
 | TC-LOGIN-008 | Cierre de sesión correcto (Logout) | ✅ Pasó |
 | TC-LOGIN-009 | Acceso a ruta protegida sin token | ✅ Pasó |
 | TC-LOGIN-010 | Comportamiento con sesión expirada | ❌ Falló |
 
-**Resultado:** 8/10 casos aprobados — **80.0% de éxito**
+**Resultado:** 9/10 casos aprobados — **90.0% de éxito**
 
 ---
 

@@ -14,7 +14,7 @@ TC-USR-{NRO}-db.png     → Captura del Query Tool de pgAdmin con SQL ejecutado 
 -- TC-USR-001: Verificar usuario administrador creado
 SELECT id, username, email, nombre_completo, estado, fecha_registro
 FROM usuarios
-WHERE username = 'carlos.perez';
+WHERE username = 'carlos';
 
 -- TC-USR-002: Verificar rol del usuario operador
 SELECT u.username, u.email, r.nombre AS rol, u.estado
